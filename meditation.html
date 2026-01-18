@@ -1,0 +1,2074 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditation Guides - Health Games</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Hamburger Menu & Drawer Navigation */
+        .nav-toggle {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 500;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: white;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-toggle:hover {
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .nav-drawer {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 400;
+            overflow-y: auto;
+            transition: right 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            padding: 20px;
+        }
+        
+        .nav-drawer.open {
+            right: 0;
+        }
+        
+        .drawer-header {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .drawer-close {
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            color: #667eea;
+            transition: all 0.3s ease;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .drawer-close:hover {
+            color: #764ba2;
+        }
+        
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0);
+            z-index: 300;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        
+        .drawer-overlay.open {
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .toc-link {
+            display: block;
+            color: #667eea;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            margin-bottom: 6px;
+        }
+        
+        .toc-link:hover {
+            background-color: #f0f3ff;
+            color: #764ba2;
+            transform: translateX(8px);
+        }
+        
+        /* Global Improvements - Lively Animations */
+        .page-stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: slideInDown 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .stats-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+        }
+        
+        .stat-item:nth-child(1) { animation-delay: 0.1s; }
+        .stat-item:nth-child(2) { animation-delay: 0.2s; }
+        .stat-item:nth-child(3) { animation-delay: 0.3s; }
+        .stat-item:nth-child(4) { animation-delay: 0.4s; }
+        
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .stat-item .number {
+            font-size: 1.8em;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-item .label {
+            font-size: 0.85em;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        /* Quick Start Section */
+        .quick-start {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            animation: slideInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quick-start::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .quick-start h3 {
+            color: #856404;
+            margin: 0 0 10px 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quick-start p {
+            color: #856404;
+            margin: 0 0 15px 0;
+            font-size: 0.95em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quick-start-videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        /* Search/Filter */
+        .search-filter {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
+            position: relative;
+        }
+        
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 12px 12px 40px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+            transform: scale(1.02);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            pointer-events: none;
+            transition: color 0.3s ease;
+        }
+        
+        .search-input:focus ~ .search-icon {
+            color: #667eea;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .filter-btn {
+            padding: 10px 16px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .filter-btn:hover {
+            border-color: #667eea;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+        }
+        
+        .toggle-all-btn {
+            padding: 10px 16px;
+            border: 2px solid #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            color: #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .toggle-all-btn:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        /* Section Improvements */
+        .section-container {
+            margin-bottom: 50px;
+            scroll-margin-top: 100px;
+            animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+        }
+        
+        .section-container:nth-child(n) { animation-delay: calc(0.1s * (var(--index, 1) - 1)); }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .section-title-with-icon {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-icon {
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .section-icon:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+            transform: translateY(-2px);
+        }
+        
+        .section-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke-width: 1.8;
+            opacity: 0.9;
+        }
+        
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.8em;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .section-header h2:hover {
+            color: #667eea;
+        }
+        
+        .toggle-section {
+            background: none;
+            border: 2px solid #667eea;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #667eea;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .toggle-section:hover {
+            background-color: #667eea;
+            color: white;
+        }
+        
+        .section-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            font-size: 0.95em;
+            color: #666;
+        }
+        
+        .stat {
+            background-color: #f0f0f0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .stat:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .collapsible-content {
+            max-height: 100000px;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+            opacity: 1;
+        }
+        
+        .collapsible-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+        }
+        
+        /* Video Card Improvements */
+        .video-thumbnail-img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            background-color: #000;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .video-card {
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .video-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .video-card.meditation-video {
+            border: 2px solid #8b5cf6;
+            border-radius: 8px;
+            background-color: #f3e8ff;
+        }
+        
+        .video-card.subseries-video {
+            opacity: 1;
+        }
+        
+        .video-card:hover.subseries-video {
+            opacity: 1;
+        }
+        
+        .video-card h3 {
+            text-decoration: none;
+            color: #333;
+            margin: 8px 0 8px 0;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .video-card:hover h3 {
+            color: #667eea;
+        }
+        
+        .video-card p {
+            text-decoration: none;
+            color: #666;
+            margin: 0;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+        
+        .video-duration {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .meditation-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background-color: #8b5cf6;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            animation: gentle-pulse 2.5s ease-in-out infinite;
+        }
+        
+        .meditation-badge svg {
+            width: 12px;
+            height: 12px;
+            stroke: currentColor;
+        }
+        
+        @keyframes gentle-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .video-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+        }
+        
+        .video-card:hover .video-thumbnail-img {
+            transform: scale(1.08);
+            transition: transform 0.3s ease;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-drawer {
+                width: 250px;
+                right: -250px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/HG Logo.png" alt="Logo">
+            <span class="initials">HG</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="adhd.html">ADHD</a></li>
+            <li><a href="anxiety.html">Anxiety</a></li>
+            <li><a href="depression.html">Depression</a></li>
+            <li><a href="meditation.html">Meditation</a></li>
+            <li><a href="trauma.html">Trauma</a></li>
+        </ul>
+    </nav>
+
+    <!-- Navigation Drawer -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="6" y1="7" x2="18" y2="7"></line>
+            <line x1="6" y1="12" x2="18" y2="12"></line>
+            <line x1="6" y1="17" x2="18" y2="17"></line>
+        </svg>
+    </button>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="nav-drawer" id="navDrawer">
+        <div class="drawer-header">
+            Sections
+            <button class="drawer-close" id="drawerClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <path d="M6 6L18 18M18 6L6 18"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="toc-list">
+                <li><a href="#section-0" class="toc-link">Core Knowledge</a></li>
+                <li><a href="#section-1" class="toc-link">Atman Padha (Path of Self)</a></li>
+                <li><a href="#section-2" class="toc-link">Dealing with Samskaras</a></li>
+                <li><a href="#section-3" class="toc-link">Dukkha Padha (Path of Contentment)</a></li>
+                <li><a href="#section-4" class="toc-link">Jnana Padha (Path of Knowledge)</a></li>
+                <li><a href="#section-5" class="toc-link">Manas Padha (Path of Mind)</a></li>
+                <li><a href="#section-6" class="toc-link">Siddhi Padha (Path of Accomplishment)</a></li>
+        </ul>
+    </div>
+
+    <section class="category-header">
+        <h1>Meditation Guides</h1>
+        <p>Practice mindfulness and meditation to enhance your mental clarity, emotional balance, and overall wellbeing. These guided sessions are perfect for beginners and experienced practitioners alike.</p>
+    </section>
+
+    <div class="category-content">
+        <!-- Overall Statistics -->
+        <div class="page-stats">
+            <div class="stats-content">
+                <div class="stat-item">
+                    <span class="number">48</span>
+                    <span class="label">Total Videos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">9h 29m 28s</span>
+                    <span class="label">Total Duration</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">22</span>
+                    <span class="label">Meditation Practices</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">26</span>
+                    <span class="label">Educational Videos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Start Section -->
+        <div class="quick-start">
+            <h3>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 6px; vertical-align: -2px;">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+                Quick Start for Beginners
+            </h3>
+            <p>New to meditation? Start with these foundational videos:</p>
+            <div class="quick-start-videos">
+                <a href="meditation-01.html" class="video-card" style="text-decoration: none;">
+                    <img src="img/thumbnails/thumb-01.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                    <div class="video-info">
+                        <h3>1. Meditation Module Overview</h3>
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            10:57
+                        </p>
+                    </div>
+                </a>
+                <a href="meditation-02.html" class="video-card" style="text-decoration: none;">
+                    <img src="img/thumbnails/thumb-02.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                    <div class="video-info">
+                        <h3>2. What is Meditation</h3>
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            13:08
+                        </p>
+                    </div>
+                </a>
+                <a href="meditation-06.html" class="video-card" style="text-decoration: none;">
+                    <img src="img/thumbnails/thumb-06.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                    <div class="video-info">
+                        <h3>6. History of Meditation</h3>
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            22:48
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="search-filter">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search videos..." aria-label="Search meditation videos">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="M21 21l-4.35-4.35"></path>
+            </svg>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all" aria-label="Show all videos">All</button>
+                <button class="filter-btn" data-filter="meditation" aria-label="Show only meditation practices">Meditations</button>
+                <button class="filter-btn" data-filter="lecture" aria-label="Show only lectures">Lectures</button>
+            </div>
+            <button id="toggleAllBtn" class="toggle-all-btn" aria-label="Expand/collapse all sections" title="Toggle all sections">Expand All</button>
+        </div>
+
+        <!-- Content Sections -->
+        <!-- Core Knowledge Section -->
+        <div class="section-container" id="section-0">
+            <div class="section-header">
+                <div class="section-title-with-icon">
+                    <span class="section-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" fill="currentColor" opacity="0.08"></path><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"></path><path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke-width="1.6"></path><path d="M12 12v6M10 18h4" stroke-width="1.5"></path></svg></span>
+                    <h2>Core Knowledge</h2>
+                </div>
+                <button class="toggle-section" aria-expanded="true" aria-label="Toggle section">
+                    <span class="toggle-icon">−</span>
+                </button>
+            </div>
+            <div class="section-stats">
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.08"></circle><circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 7V12L15 14" stroke-width="1.8"></path>
+                    </svg>
+                    2h 27m 22s
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <rect x="3" y="8" width="18" height="13" rx="1.5" fill="currentColor" opacity="0.08"></rect><rect x="3" y="8" width="18" height="13" rx="1.5"></rect>
+                        <path d="M16 3v5M8 3v5" stroke-width="1.8"></path>
+                    </svg>
+                    11 videos
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <path d="M5 4H19C20.1 4 21 4.9 21 6V18C21 19.1 20.1 20 19 20H5C3.9 20 3 19.1 3 18V6C3 4.9 3.9 4 5 4Z" fill="currentColor" opacity="0.08"></path><path d="M5 4H19C20.1 4 21 4.9 21 6V18C21 19.1 20.1 20 19 20H5C3.9 20 3 19.1 3 18V6C3 4.9 3.9 4 5 4Z"></path>
+                    </svg>
+                    6 lectures
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.08"></circle><circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 8L13 13H10L12 8Z" fill="currentColor" opacity="0.6"></path>
+                    </svg>
+                    5 meditations
+                </span>
+            </div>
+            <div class="videos-grid collapsible-content">
+            <a href="meditation-01.html" class="video-card " data-title="meditation module overview" data-type="lecture" data-section-id="section-1">
+                <img src="img/thumbnails/thumb-01.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Meditation Module Overview</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            10:57
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-02.html" class="video-card " data-title="what is meditation." data-type="lecture" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-02.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>What is Meditation.</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            13:08
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-03.html" class="video-card meditation-video subseries-video" data-title="nadi shuddhi (meditation)" data-type="meditation" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-03.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Nadi Shuddhi (Meditation)</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            8:07
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-04.html" class="video-card meditation-video subseries-video" data-title="anuloma viloma (meditation)" data-type="meditation" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-04.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Anuloma Viloma (Meditation)</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            6:41
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-05.html" class="video-card meditation-video subseries-video" data-title="prana shuddhi (meditation)" data-type="meditation" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-05.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Prana Shuddhi (Meditation)</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            5:31
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-06.html" class="video-card " data-title="history of meditation" data-type="lecture" data-section-id="section-3">
+                <img src="img/thumbnails/thumb-06.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>History of Meditation</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            22:48
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-07.html" class="video-card " data-title="different meditative styles" data-type="lecture" data-section-id="section-4">
+                <img src="img/thumbnails/thumb-07.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Different Meditative Styles</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            27:12
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-08.html" class="video-card meditation-video subseries-video" data-title="following the breath (meditation)" data-type="meditation" data-section-id="section-4">
+                <img src="img/thumbnails/thumb-08.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Following the Breath (Meditation)</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            8:18
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-09.html" class="video-card " data-title="science of meditation" data-type="lecture" data-section-id="section-5">
+                <img src="img/thumbnails/thumb-09.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Science of Meditation</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            24:26
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-10.html" class="video-card meditation-video subseries-video" data-title="posture (meditation)" data-type="meditation" data-section-id="section-5">
+                <img src="img/thumbnails/thumb-10.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Posture (Meditation)</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            7:29
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-11.html" class="video-card " data-title="metaphysics of meditation" data-type="lecture" data-section-id="section-6">
+                <img src="img/thumbnails/thumb-11.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Metaphysics of Meditation</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            12:45
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            </div>
+        </div>
+
+        <!-- Atman Padha (Path of Self) Section -->
+        <div class="section-container" id="section-1">
+            <div class="section-header">
+                <div class="section-title-with-icon">
+                    <span class="section-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="2.5" fill="currentColor" opacity="0.15"></circle><circle cx="12" cy="7" r="2.5"></circle><path d="M12 9.5v6M9 15l3 2l3-2" stroke-width="1.6"></path><path d="M8.5 12c-1.5 1-2.5 2-2.5 3 0 1.7 1.7 3 3.5 3" opacity="0.6"></path><path d="M15.5 12c1.5 1 2.5 2 2.5 3 0 1.7-1.7 3-3.5 3" opacity="0.6"></path></svg></span>
+                    <h2>Atman Padha (Path of Self)</h2>
+                </div>
+                <button class="toggle-section" aria-expanded="true" aria-label="Toggle section">
+                    <span class="toggle-icon">−</span>
+                </button>
+            </div>
+            <div class="section-stats">
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    1h 25m 39s
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+                        <polyline points="17 2 12 7 7 2"></polyline>
+                    </svg>
+                    9 videos
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    3 lectures
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                    6 meditations
+                </span>
+            </div>
+            <div class="videos-grid collapsible-content">
+            <a href="meditation-12.html" class="video-card " data-title="the nature of self" data-type="lecture" data-section-id="section-1">
+                <img src="img/thumbnails/thumb-12.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>The Nature of Self</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            6:56
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-13.html" class="video-card meditation-video subseries-video" data-title="shanmukhi mudra" data-type="meditation" data-section-id="section-1">
+                <img src="img/thumbnails/thumb-13.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Shanmukhi Mudra</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            10:48
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-14.html" class="video-card " data-title="panchakosha theory" data-type="lecture" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-14.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Panchakosha Theory</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            17:22
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-15.html" class="video-card meditation-video subseries-video" data-title="namaste expansion" data-type="meditation" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-15.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Namaste Expansion</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            9:50
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-16.html" class="video-card meditation-video subseries-video" data-title="energy healing" data-type="meditation" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-16.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Energy Healing</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            7:35
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-17.html" class="video-card meditation-video subseries-video" data-title="unstruck sound" data-type="meditation" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-17.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Unstruck Sound</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            2:58
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-18.html" class="video-card " data-title="confidence vs. ego" data-type="lecture" data-section-id="section-3">
+                <img src="img/thumbnails/thumb-18.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Confidence vs. Ego</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            23:46
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-19.html" class="video-card meditation-video subseries-video" data-title="what is self." data-type="meditation" data-section-id="section-3">
+                <img src="img/thumbnails/thumb-19.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>What is Self.</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            4:23
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-20.html" class="video-card meditation-video subseries-video" data-title="neti neti" data-type="meditation" data-section-id="section-3">
+                <img src="img/thumbnails/thumb-20.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Neti Neti</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            2:01
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            </div>
+        </div>
+
+        <!-- Dealing with Samskaras Section -->
+        <div class="section-container" id="section-2">
+            <div class="section-header">
+                <div class="section-title-with-icon">
+                    <span class="section-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36M20.49 15a9 9 0 0 1-14.85 3.36"></path></svg></span>
+                    <h2>Dealing with Samskaras</h2>
+                </div>
+                <button class="toggle-section" aria-expanded="true" aria-label="Toggle section">
+                    <span class="toggle-icon">−</span>
+                </button>
+            </div>
+            <div class="section-stats">
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    1h 17m 4s
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+                        <polyline points="17 2 12 7 7 2"></polyline>
+                    </svg>
+                    4 videos
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    3 lectures
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                    1 meditations
+                </span>
+            </div>
+            <div class="videos-grid collapsible-content">
+            <a href="meditation-21.html" class="video-card " data-title="vedic psychology" data-type="lecture" data-section-id="section-1">
+                <img src="img/thumbnails/thumb-21.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Vedic Psychology</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            34:23
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-22.html" class="video-card " data-title="working with samskaras" data-type="lecture" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-22.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Working with Samskaras</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            20:54
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-23.html" class="video-card meditation-video subseries-video" data-title="yoga nidra" data-type="meditation" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-23.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Yoga Nidra</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            17:23
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-24.html" class="video-card " data-title="coaching vs. therapy" data-type="lecture" data-section-id="section-3">
+                <img src="img/thumbnails/thumb-24.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Coaching vs. Therapy</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            4:24
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            </div>
+        </div>
+
+        <!-- Dukkha Padha (Path of Contentment) Section -->
+        <div class="section-container" id="section-3">
+            <div class="section-header">
+                <div class="section-title-with-icon">
+                    <span class="section-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L7.5 9h3v8h3v-8h3L12 3z" fill="currentColor" opacity="0.12"></path><path d="M12 3L7.5 9h3v8h3v-8h3L12 3z"></path><circle cx="12" cy="18.5" r="2" stroke-width="1.6"></circle><path d="M5 20h14" opacity="0.5"></path></svg></span>
+                    <h2>Dukkha Padha (Path of Contentment)</h2>
+                </div>
+                <button class="toggle-section" aria-expanded="true" aria-label="Toggle section">
+                    <span class="toggle-icon">−</span>
+                </button>
+            </div>
+            <div class="section-stats">
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    55m 8s
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+                        <polyline points="17 2 12 7 7 2"></polyline>
+                    </svg>
+                    5 videos
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    3 lectures
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                    2 meditations
+                </span>
+            </div>
+            <div class="videos-grid collapsible-content">
+            <a href="meditation-25.html" class="video-card " data-title="dukkha" data-type="lecture" data-section-id="section-1">
+                <img src="img/thumbnails/thumb-25.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Dukkha</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            14:19
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-26.html" class="video-card meditation-video subseries-video" data-title="raga and dvesha (attraction & repulsion)" data-type="meditation" data-section-id="section-1">
+                <img src="img/thumbnails/thumb-26.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Raga and Dvesha (Attraction & Repulsion)</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            5:44
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-27.html" class="video-card " data-title="dharma" data-type="lecture" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-27.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Dharma</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            10:53
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-28.html" class="video-card " data-title="karma" data-type="lecture" data-section-id="section-3">
+                <img src="img/thumbnails/thumb-28.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Karma</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            17:55
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-29.html" class="video-card meditation-video subseries-video" data-title="uijayi pranayama" data-type="meditation" data-section-id="section-3">
+                <img src="img/thumbnails/thumb-29.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Uijayi Pranayama</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            6:17
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            </div>
+        </div>
+
+        <!-- Jnana Padha (Path of Knowledge) Section -->
+        <div class="section-container" id="section-4">
+            <div class="section-header">
+                <div class="section-title-with-icon">
+                    <span class="section-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L6 11h2.5L8 20h8l-2.5-9H18L12 3z" fill="currentColor" opacity="0.12"></path><path d="M12 3L6 11h2.5L8 20h8l-2.5-9H18L12 3z"></path><circle cx="9" cy="14" r="1.2" fill="currentColor" opacity="0.6"></circle><circle cx="15" cy="14" r="1.2" fill="currentColor" opacity="0.6"></circle></svg></span>
+                    <h2>Jnana Padha (Path of Knowledge)</h2>
+                </div>
+                <button class="toggle-section" aria-expanded="true" aria-label="Toggle section">
+                    <span class="toggle-icon">−</span>
+                </button>
+            </div>
+            <div class="section-stats">
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    40m
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+                        <polyline points="17 2 12 7 7 2"></polyline>
+                    </svg>
+                    3 videos
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    2 lectures
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                    1 meditations
+                </span>
+            </div>
+            <div class="videos-grid collapsible-content">
+            <a href="meditation-30.html" class="video-card " data-title="knowledge and the mind" data-type="lecture" data-section-id="section-1">
+                <img src="img/thumbnails/thumb-30.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Knowledge and the Mind</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            21:44
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-31.html" class="video-card meditation-video subseries-video" data-title="activating ajna chakra (charging the laser beam)" data-type="meditation" data-section-id="section-1">
+                <img src="img/thumbnails/thumb-31.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Activating Ajna Chakra (Charging the Laser Beam)</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            5:19
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-32.html" class="video-card " data-title="vidya & jnana" data-type="lecture" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-32.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Vidya & Jnana</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            12:57
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            </div>
+        </div>
+
+        <!-- Manas Padha (Path of Mind) Section -->
+        <div class="section-container" id="section-5">
+            <div class="section-header">
+                <div class="section-title-with-icon">
+                    <span class="section-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" fill="currentColor" opacity="0.08"></circle><circle cx="12" cy="12" r="9"></circle><path d="M12 5V8M16.5 12H19.5M12 16v3M7.5 12H4.5" stroke-width="1.6"></path><circle cx="12" cy="12" r="2.5" fill="currentColor" opacity="0.4"></circle></svg></span>
+                    <h2>Manas Padha (Path of Mind)</h2>
+                </div>
+                <button class="toggle-section" aria-expanded="true" aria-label="Toggle section">
+                    <span class="toggle-icon">−</span>
+                </button>
+            </div>
+            <div class="section-stats">
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    1h 2m 31s
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+                        <polyline points="17 2 12 7 7 2"></polyline>
+                    </svg>
+                    6 videos
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    3 lectures
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                    3 meditations
+                </span>
+            </div>
+            <div class="videos-grid collapsible-content">
+            <a href="meditation-33.html" class="video-card " data-title="the nature of mind" data-type="lecture" data-section-id="section-1">
+                <img src="img/thumbnails/thumb-33.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>The Nature of Mind</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            12:45
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-34.html" class="video-card " data-title="system of mind" data-type="lecture" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-34.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>System of Mind</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            12:34
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-35.html" class="video-card meditation-video subseries-video" data-title="rotating sound awareness" data-type="meditation" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-35.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Rotating Sound Awareness</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            6:52
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-36.html" class="video-card meditation-video subseries-video" data-title="notice faculty of hearing" data-type="meditation" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-36.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Notice Faculty of Hearing</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            6:13
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-37.html" class="video-card " data-title="intro to mantra practice" data-type="lecture" data-section-id="section-3">
+                <img src="img/thumbnails/thumb-37.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Intro to Mantra Practice</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            15:54
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-38.html" class="video-card meditation-video subseries-video" data-title="japa" data-type="meditation" data-section-id="section-3">
+                <img src="img/thumbnails/thumb-38.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Japa</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            8:13
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            </div>
+        </div>
+
+        <!-- Siddhi Padha (Path of Accomplishment) Section -->
+        <div class="section-container" id="section-6">
+            <div class="section-header">
+                <div class="section-title-with-icon">
+                    <span class="section-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15 8H22L17 12L19.5 18L12 14L4.5 18L7 12L2 8H9L12 2Z" fill="currentColor" opacity="0.12"></path><path d="M12 2L15 8H22L17 12L19.5 18L12 14L4.5 18L7 12L2 8H9L12 2Z"></path><circle cx="12" cy="12" r="3" fill="none" stroke-width="1.5" opacity="0.5"></circle></svg></span>
+                    <h2>Siddhi Padha (Path of Accomplishment)</h2>
+                </div>
+                <button class="toggle-section" aria-expanded="true" aria-label="Toggle section">
+                    <span class="toggle-icon">−</span>
+                </button>
+            </div>
+            <div class="section-stats">
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    1h 41m 44s
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+                        <polyline points="17 2 12 7 7 2"></polyline>
+                    </svg>
+                    10 videos
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    6 lectures
+                </span>
+                <span class="stat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px; vertical-align: -2px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                    4 meditations
+                </span>
+            </div>
+            <div class="videos-grid collapsible-content">
+            <a href="meditation-39.html" class="video-card " data-title="karma fal" data-type="lecture" data-section-id="section-1">
+                <img src="img/thumbnails/thumb-39.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Karma Fal</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            7:32
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-40.html" class="video-card " data-title="origin of motivation" data-type="lecture" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-40.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Origin of Motivation</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            10:06
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-41.html" class="video-card meditation-video subseries-video" data-title="trataka (fixed point gazing)" data-type="meditation" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-41.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Trataka (Fixed Point Gazing)</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            11:03
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-42.html" class="video-card meditation-video subseries-video" data-title="yantra (internal trataka)" data-type="meditation" data-section-id="section-2">
+                <img src="img/thumbnails/thumb-42.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Yantra (Internal Trataka)</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            7:26
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-43.html" class="video-card " data-title="sangha" data-type="lecture" data-section-id="section-3">
+                <img src="img/thumbnails/thumb-43.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Sangha</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            13:26
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-44.html" class="video-card " data-title="shuddhi" data-type="lecture" data-section-id="section-4">
+                <img src="img/thumbnails/thumb-44.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Shuddhi</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            16:38
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-45.html" class="video-card meditation-video subseries-video" data-title="kapalbhati (breath of fire)" data-type="meditation" data-section-id="section-4">
+                <img src="img/thumbnails/thumb-45.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Kapalbhati (Breath of Fire)</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            10:23
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-46.html" class="video-card " data-title="satya" data-type="lecture" data-section-id="section-5">
+                <img src="img/thumbnails/thumb-46.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Satya</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            11:32
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-47.html" class="video-card meditation-video subseries-video" data-title="replace 'i am' with 'my mind says'" data-type="meditation" data-section-id="section-5">
+                <img src="img/thumbnails/thumb-47.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Replace 'I am' with 'My mind says'</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            4:20
+                        </p>
+                        <span class="meditation-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                            </svg>
+                            Meditation
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <a href="meditation-48.html" class="video-card " data-title="reframing goals to actions" data-type="lecture" data-section-id="section-6">
+                <img src="img/thumbnails/thumb-48.jpg" alt="Video thumbnail" class="video-thumbnail-img">
+                <div class="video-info">
+                    <h3>Reframing Goals to Actions</h3>
+                    <div class="video-meta-row">
+                        <p class="video-duration">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; margin-right: 4px;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            9:18
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Health Games. Supporting your mental wellness journey.</p>
+    </footer>
+
+    <script>
+        // Navigation Drawer Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navDrawer = document.getElementById('navDrawer');
+        const drawerOverlay = document.getElementById('drawerOverlay');
+        const drawerClose = document.getElementById('drawerClose');
+
+        navToggle.addEventListener('click', () => {
+            navDrawer.classList.toggle('open');
+            drawerOverlay.classList.toggle('open');
+        });
+
+        drawerClose.addEventListener('click', () => {
+            navDrawer.classList.remove('open');
+            drawerOverlay.classList.remove('open');
+        });
+
+        drawerOverlay.addEventListener('click', () => {
+            navDrawer.classList.remove('open');
+            drawerOverlay.classList.remove('open');
+        });
+
+        // Close drawer when clicking a link
+        // Load collapsed state from localStorage
+        function loadCollapsedState() {
+            const savedState = localStorage.getItem('meditationSectionsState');
+            if (savedState) {
+                const collapsedSections = JSON.parse(savedState);
+                collapsedSections.forEach(sectionId => {
+                    const container = document.getElementById(sectionId);
+                    if (container) {
+                        const content = container.querySelector('.collapsible-content');
+                        const btn = container.querySelector('.toggle-section');
+                        if (content && btn) {
+                            content.classList.add('collapsed');
+                            btn.setAttribute('aria-expanded', 'false');
+                            btn.querySelector('.toggle-icon').textContent = '+';
+                        }
+                    }
+                });
+            }
+        }
+
+        // Save collapsed state to localStorage
+        function saveCollapsedState() {
+            const collapsedSections = [];
+            document.querySelectorAll('.section-container').forEach(container => {
+                const content = container.querySelector('.collapsible-content');
+                if (content && content.classList.contains('collapsed')) {
+                    collapsedSections.push(container.id);
+                }
+            });
+            localStorage.setItem('meditationSectionsState', JSON.stringify(collapsedSections));
+        }
+
+        // Load state on page load
+        loadCollapsedState();
+
+        // Expand/Collapse All functionality
+        const toggleAllBtn = document.getElementById('toggleAllBtn');
+        let allExpanded = true;
+
+        function updateToggleAllState() {
+            const collapsedCount = document.querySelectorAll('.collapsible-content.collapsed').length;
+            const totalSections = document.querySelectorAll('.section-container').length;
+            allExpanded = collapsedCount === 0;
+            toggleAllBtn.textContent = allExpanded ? 'Collapse All' : 'Expand All';
+        }
+
+        toggleAllBtn.addEventListener('click', function() {
+            const sections = document.querySelectorAll('.section-container');
+            sections.forEach(container => {
+                const content = container.querySelector('.collapsible-content');
+                const btn = container.querySelector('.toggle-section');
+                
+                if (allExpanded) {
+                    // Collapse all
+                    content.classList.add('collapsed');
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.querySelector('.toggle-icon').textContent = '+';
+                } else {
+                    // Expand all
+                    content.classList.remove('collapsed');
+                    btn.setAttribute('aria-expanded', 'true');
+                    btn.querySelector('.toggle-icon').textContent = '−';
+                }
+            });
+            
+            allExpanded = !allExpanded;
+            toggleAllBtn.textContent = allExpanded ? 'Collapse All' : 'Expand All';
+            saveCollapsedState();
+        });
+
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navDrawer.classList.remove('open');
+                drawerOverlay.classList.remove('open');
+            });
+        });
+
+        // Collapsible Sections
+        document.querySelectorAll('.toggle-section').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const content = this.closest('.section-container').querySelector('.collapsible-content');
+                const isCollapsed = content.classList.contains('collapsed');
+                content.classList.toggle('collapsed');
+                this.setAttribute('aria-expanded', !isCollapsed);
+                this.querySelector('.toggle-icon').textContent = isCollapsed ? '−' : '+';
+                
+                // Save state to localStorage
+                saveCollapsedState();
+                
+                // Update toggle all button state
+                updateToggleAllState();
+            });
+        });
+
+        // Search/Filter Functionality
+        const searchInput = document.getElementById('searchInput');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        let currentFilter = 'all';
+
+        function filterVideos() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const cards = document.querySelectorAll('.video-card[data-title]');
+            
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title');
+                const type = card.getAttribute('data-type');
+                const matchesSearch = title.includes(searchTerm);
+                const matchesFilter = currentFilter === 'all' || type === currentFilter;
+                
+                card.style.display = (matchesSearch && matchesFilter) ? '' : 'none';
+            });
+        }
+
+        searchInput.addEventListener('input', filterVideos);
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.getAttribute('data-filter');
+                filterVideos();
+            });
+        });
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === '/') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+            if (e.key === 'Escape' && navDrawer.classList.contains('open')) {
+                navDrawer.classList.remove('open');
+                drawerOverlay.classList.remove('open');
+            }
+        });
+
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+
+</html>

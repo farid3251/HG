@@ -1,0 +1,386 @@
+[
+  {
+    "number": 1,
+    "title": "Meditation Module Overview",
+    "duration": "10:57",
+    "is_meditation": false,
+    "filename": "1 - Meditation Module Overview.mp4",
+    "folder": "Core Knowledge"
+  },
+  {
+    "number": 2,
+    "title": "What is Meditation.",
+    "duration": "13:08",
+    "is_meditation": false,
+    "filename": "2 - What is Meditation..mp4",
+    "folder": "Core Knowledge"
+  },
+  {
+    "number": 3,
+    "title": "Nadi Shuddhi (Meditation)",
+    "duration": "8:07",
+    "is_meditation": true,
+    "filename": "2.1 - Nadi Shuddhi (Meditation).mp4",
+    "folder": "Core Knowledge"
+  },
+  {
+    "number": 4,
+    "title": "Anuloma Viloma (Meditation)",
+    "duration": "6:41",
+    "is_meditation": true,
+    "filename": "2.2 - Anuloma Viloma (Meditation).mp4",
+    "folder": "Core Knowledge"
+  },
+  {
+    "number": 5,
+    "title": "Prana Shuddhi (Meditation)",
+    "duration": "5:31",
+    "is_meditation": true,
+    "filename": "2.3 - Prana Shuddhi (Meditation).mp4",
+    "folder": "Core Knowledge"
+  },
+  {
+    "number": 6,
+    "title": "History of Meditation",
+    "duration": "22:48",
+    "is_meditation": false,
+    "filename": "3 - History of Meditation.mp4",
+    "folder": "Core Knowledge"
+  },
+  {
+    "number": 7,
+    "title": "Different Meditative Styles",
+    "duration": "27:12",
+    "is_meditation": false,
+    "filename": "4 - Different Meditative Styles.mp4",
+    "folder": "Core Knowledge"
+  },
+  {
+    "number": 8,
+    "title": "Following the Breath (Meditation)",
+    "duration": "8:18",
+    "is_meditation": true,
+    "filename": "4.1 - Following the Breath (Meditation).mp4",
+    "folder": "Core Knowledge"
+  },
+  {
+    "number": 9,
+    "title": "Science of Meditation",
+    "duration": "24:26",
+    "is_meditation": false,
+    "filename": "5 - Science of Meditation.mp4",
+    "folder": "Core Knowledge"
+  },
+  {
+    "number": 10,
+    "title": "Posture (Meditation)",
+    "duration": "7:29",
+    "is_meditation": true,
+    "filename": "5.1 - Posture (Meditation).mp4",
+    "folder": "Core Knowledge"
+  },
+  {
+    "number": 11,
+    "title": "Metaphysics of Meditation",
+    "duration": "12:45",
+    "is_meditation": false,
+    "filename": "6 - Metaphysics of Meditation.mp4",
+    "folder": "Core Knowledge"
+  },
+  {
+    "number": 12,
+    "title": "The Nature of Self",
+    "duration": "6:56",
+    "is_meditation": false,
+    "filename": "1 - The Nature of Self.mp4",
+    "folder": "Atman Padha (Path of Self)"
+  },
+  {
+    "number": 13,
+    "title": "Shanmukhi Mudra",
+    "duration": "10:48",
+    "is_meditation": true,
+    "filename": "1.1 - Shanmukhi Mudra.mp4",
+    "folder": "Atman Padha (Path of Self)"
+  },
+  {
+    "number": 14,
+    "title": "Panchakosha Theory",
+    "duration": "17:22",
+    "is_meditation": false,
+    "filename": "2 - Panchakosha Theory.mp4",
+    "folder": "Atman Padha (Path of Self)"
+  },
+  {
+    "number": 15,
+    "title": "Namaste Expansion",
+    "duration": "9:50",
+    "is_meditation": true,
+    "filename": "2.1 - Namaste Expansion.mp4",
+    "folder": "Atman Padha (Path of Self)"
+  },
+  {
+    "number": 16,
+    "title": "Energy Healing",
+    "duration": "7:35",
+    "is_meditation": true,
+    "filename": "2.2 - Energy Healing.mp4",
+    "folder": "Atman Padha (Path of Self)"
+  },
+  {
+    "number": 17,
+    "title": "Unstruck Sound",
+    "duration": "2:58",
+    "is_meditation": true,
+    "filename": "2.3 - Unstruck Sound.mp4",
+    "folder": "Atman Padha (Path of Self)"
+  },
+  {
+    "number": 18,
+    "title": "Confidence vs. Ego",
+    "duration": "23:46",
+    "is_meditation": false,
+    "filename": "3 - Confidence vs. Ego.mp4",
+    "folder": "Atman Padha (Path of Self)"
+  },
+  {
+    "number": 19,
+    "title": "What is Self.",
+    "duration": "4:23",
+    "is_meditation": true,
+    "filename": "3.1 - What is Self..mp4",
+    "folder": "Atman Padha (Path of Self)"
+  },
+  {
+    "number": 20,
+    "title": "Neti Neti",
+    "duration": "2:01",
+    "is_meditation": true,
+    "filename": "3.2 - Neti Neti.mp4",
+    "folder": "Atman Padha (Path of Self)"
+  },
+  {
+    "number": 21,
+    "title": "Vedic Psychology",
+    "duration": "34:23",
+    "is_meditation": false,
+    "filename": "1 - Vedic Psychology.mp4",
+    "folder": "Dealing with Samskaras"
+  },
+  {
+    "number": 22,
+    "title": "Working with Samskaras",
+    "duration": "20:54",
+    "is_meditation": false,
+    "filename": "2 - Working with Samskaras.mp4",
+    "folder": "Dealing with Samskaras"
+  },
+  {
+    "number": 23,
+    "title": "Yoga Nidra",
+    "duration": "17:23",
+    "is_meditation": true,
+    "filename": "2.1 - Yoga Nidra.mp4",
+    "folder": "Dealing with Samskaras"
+  },
+  {
+    "number": 24,
+    "title": "Coaching vs. Therapy",
+    "duration": "4:24",
+    "is_meditation": false,
+    "filename": "3 - Coaching vs. Therapy.mp4",
+    "folder": "Dealing with Samskaras"
+  },
+  {
+    "number": 25,
+    "title": "Dukkha",
+    "duration": "14:19",
+    "is_meditation": false,
+    "filename": "1 - Dukkha.mp4",
+    "folder": "Dukkha Padha (Path of Contentment)"
+  },
+  {
+    "number": 26,
+    "title": "Raga and Dvesha (Attraction & Repulsion)",
+    "duration": "5:44",
+    "is_meditation": true,
+    "filename": "1.1 - Raga and Dvesha (Attraction & Repulsion).mp4",
+    "folder": "Dukkha Padha (Path of Contentment)"
+  },
+  {
+    "number": 27,
+    "title": "Dharma",
+    "duration": "10:53",
+    "is_meditation": false,
+    "filename": "2 - Dharma.mp4",
+    "folder": "Dukkha Padha (Path of Contentment)"
+  },
+  {
+    "number": 28,
+    "title": "Karma",
+    "duration": "17:55",
+    "is_meditation": false,
+    "filename": "3 - Karma.mp4",
+    "folder": "Dukkha Padha (Path of Contentment)"
+  },
+  {
+    "number": 29,
+    "title": "Uijayi Pranayama",
+    "duration": "6:17",
+    "is_meditation": true,
+    "filename": "3.1 - Uijayi Pranayama.mp4",
+    "folder": "Dukkha Padha (Path of Contentment)"
+  },
+  {
+    "number": 30,
+    "title": "Knowledge and the Mind",
+    "duration": "21:44",
+    "is_meditation": false,
+    "filename": "1 - Knowledge and the Mind.mp4",
+    "folder": "Jnana Padha (Path of Knowledge)"
+  },
+  {
+    "number": 31,
+    "title": "Activating Ajna Chakra (Charging the Laser Beam)",
+    "duration": "5:19",
+    "is_meditation": true,
+    "filename": "1.1 - Activating Ajna Chakra (Charging the Laser Beam).mp4",
+    "folder": "Jnana Padha (Path of Knowledge)"
+  },
+  {
+    "number": 32,
+    "title": "Vidya & Jnana",
+    "duration": "12:57",
+    "is_meditation": false,
+    "filename": "2 - Vidya & Jnana.mp4",
+    "folder": "Jnana Padha (Path of Knowledge)"
+  },
+  {
+    "number": 33,
+    "title": "The Nature of Mind",
+    "duration": "12:45",
+    "is_meditation": false,
+    "filename": "1 - The Nature of Mind.mp4",
+    "folder": "Manas Padha (Path of Mind)"
+  },
+  {
+    "number": 34,
+    "title": "System of Mind",
+    "duration": "12:34",
+    "is_meditation": false,
+    "filename": "2 - System of Mind.mp4",
+    "folder": "Manas Padha (Path of Mind)"
+  },
+  {
+    "number": 35,
+    "title": "Rotating Sound Awareness",
+    "duration": "6:52",
+    "is_meditation": true,
+    "filename": "2.1 - Rotating Sound Awareness.mp4",
+    "folder": "Manas Padha (Path of Mind)"
+  },
+  {
+    "number": 36,
+    "title": "Notice Faculty of Hearing",
+    "duration": "6:13",
+    "is_meditation": true,
+    "filename": "2.2 - Notice Faculty of Hearing.mp4",
+    "folder": "Manas Padha (Path of Mind)"
+  },
+  {
+    "number": 37,
+    "title": "Intro to Mantra Practice",
+    "duration": "15:54",
+    "is_meditation": false,
+    "filename": "3 - Intro to Mantra Practice.mp4",
+    "folder": "Manas Padha (Path of Mind)"
+  },
+  {
+    "number": 38,
+    "title": "Japa",
+    "duration": "8:13",
+    "is_meditation": true,
+    "filename": "3.1 - Japa.mp4",
+    "folder": "Manas Padha (Path of Mind)"
+  },
+  {
+    "number": 39,
+    "title": "Karma Fal",
+    "duration": "7:32",
+    "is_meditation": false,
+    "filename": "1 - Karma Fal.mp4",
+    "folder": "Siddhi Padha (Patch of Accomplishment)"
+  },
+  {
+    "number": 40,
+    "title": "Origin of Motivation",
+    "duration": "10:06",
+    "is_meditation": false,
+    "filename": "2 - Origin of Motivation.mp4",
+    "folder": "Siddhi Padha (Patch of Accomplishment)"
+  },
+  {
+    "number": 41,
+    "title": "Trataka (Fixed Point Gazing)",
+    "duration": "11:03",
+    "is_meditation": true,
+    "filename": "2.1 - Trataka (Fixed Point Gazing).mp4",
+    "folder": "Siddhi Padha (Patch of Accomplishment)"
+  },
+  {
+    "number": 42,
+    "title": "Yantra (Internal Trataka)",
+    "duration": "7:26",
+    "is_meditation": true,
+    "filename": "2.2 - Yantra (Internal Trataka).mp4",
+    "folder": "Siddhi Padha (Patch of Accomplishment)"
+  },
+  {
+    "number": 43,
+    "title": "Sangha",
+    "duration": "13:26",
+    "is_meditation": false,
+    "filename": "3 - Sangha.mp4",
+    "folder": "Siddhi Padha (Patch of Accomplishment)"
+  },
+  {
+    "number": 44,
+    "title": "Shuddhi",
+    "duration": "16:38",
+    "is_meditation": false,
+    "filename": "4 - Shuddhi.mp4",
+    "folder": "Siddhi Padha (Patch of Accomplishment)"
+  },
+  {
+    "number": 45,
+    "title": "Kapalbhati (Breath of Fire)",
+    "duration": "10:23",
+    "is_meditation": true,
+    "filename": "4.1 - Kapalbhati (Breath of Fire).mp4",
+    "folder": "Siddhi Padha (Patch of Accomplishment)"
+  },
+  {
+    "number": 46,
+    "title": "Satya",
+    "duration": "11:32",
+    "is_meditation": false,
+    "filename": "5 - Satya.mp4",
+    "folder": "Siddhi Padha (Patch of Accomplishment)"
+  },
+  {
+    "number": 47,
+    "title": "Replace 'I am' with 'My mind says'",
+    "duration": "4:20",
+    "is_meditation": true,
+    "filename": "5.1 - Replace 'I am' with 'My mind says'.mp4",
+    "folder": "Siddhi Padha (Patch of Accomplishment)"
+  },
+  {
+    "number": 48,
+    "title": "Reframing Goals to Actions",
+    "duration": "9:18",
+    "is_meditation": false,
+    "filename": "6 - Reframing Goals to Actions.mp4",
+    "folder": "Siddhi Padha (Patch of Accomplishment)"
+  }
+]
