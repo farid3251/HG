@@ -5,7 +5,9 @@
     "duration": "10:57",
     "is_meditation": false,
     "filename": "1 - Meditation Module Overview.mp4",
-    "folder": "Core Knowledge"
+    "folder": "Core Knowledge",
+    "youtubeId": "qQWDxm_P6qU",
+    "driveId": "13GJBH15ywwgbjFrn-1q0xqjQbCeZUJzd"
   },
   {
     "number": 2,
@@ -13,7 +15,8 @@
     "duration": "13:08",
     "is_meditation": false,
     "filename": "2 - What is Meditation..mp4",
-    "folder": "Core Knowledge"
+    "folder": "Core Knowledge",
+    "driveId": "1Uwy42L5YTg58ZW6rmMFf2j1Jnb6P4bj8"
   },
   {
     "number": 3,
@@ -21,7 +24,8 @@
     "duration": "8:07",
     "is_meditation": true,
     "filename": "2.1 - Nadi Shuddhi (Meditation).mp4",
-    "folder": "Core Knowledge"
+    "folder": "Core Knowledge",
+    "driveId": "1G45xoKfOZKhbeoqmj8Owi__gNYE2dkZR"
   },
   {
     "number": 4,
@@ -29,7 +33,8 @@
     "duration": "6:41",
     "is_meditation": true,
     "filename": "2.2 - Anuloma Viloma (Meditation).mp4",
-    "folder": "Core Knowledge"
+    "folder": "Core Knowledge",
+    "driveId": "1MpSQARFemtTRkzwm2qaYUZ2D2gp5H_FL"
   },
   {
     "number": 5,
@@ -37,7 +42,8 @@
     "duration": "5:31",
     "is_meditation": true,
     "filename": "2.3 - Prana Shuddhi (Meditation).mp4",
-    "folder": "Core Knowledge"
+    "folder": "Core Knowledge",
+    "driveId": "1i-CakEz9nddvoblV0fQBPtTbefgm2DRE"
   },
   {
     "number": 6,
@@ -45,7 +51,8 @@
     "duration": "22:48",
     "is_meditation": false,
     "filename": "3 - History of Meditation.mp4",
-    "folder": "Core Knowledge"
+    "folder": "Core Knowledge",
+    "driveId": "193pGv3FkNQuHAjlxDchJHTiXFC9_DvgS"
   },
   {
     "number": 7,
@@ -53,7 +60,8 @@
     "duration": "27:12",
     "is_meditation": false,
     "filename": "4 - Different Meditative Styles.mp4",
-    "folder": "Core Knowledge"
+    "folder": "Core Knowledge",
+    "driveId": "1hgi6agYLM6x7-hux0eLtUzR_R5ayKklT"
   },
   {
     "number": 8,
@@ -61,7 +69,8 @@
     "duration": "8:18",
     "is_meditation": true,
     "filename": "4.1 - Following the Breath (Meditation).mp4",
-    "folder": "Core Knowledge"
+    "folder": "Core Knowledge",
+    "driveId": "1A99jEc_r0rIx8PruHyO7jygrl2Zl9BtP"
   },
   {
     "number": 9,
@@ -69,7 +78,8 @@
     "duration": "24:26",
     "is_meditation": false,
     "filename": "5 - Science of Meditation.mp4",
-    "folder": "Core Knowledge"
+    "folder": "Core Knowledge",
+    "driveId": "1_tS8k49x7-lvMqRXhkKwbcVxpMbEKPfu"
   },
   {
     "number": 10,
@@ -77,7 +87,8 @@
     "duration": "7:29",
     "is_meditation": true,
     "filename": "5.1 - Posture (Meditation).mp4",
-    "folder": "Core Knowledge"
+    "folder": "Core Knowledge",
+    "driveId": "11ogqmZv7UtNLLDd9HLLvWBg-mYO8qEVf"
   },
   {
     "number": 11,
@@ -85,7 +96,8 @@
     "duration": "12:45",
     "is_meditation": false,
     "filename": "6 - Metaphysics of Meditation.mp4",
-    "folder": "Core Knowledge"
+    "folder": "Core Knowledge",
+    "driveId": "1ff9FL-S8LtIPXntpZSPjb_kEUfEyyRvC"
   },
   {
     "number": 12,
@@ -93,7 +105,8 @@
     "duration": "6:56",
     "is_meditation": false,
     "filename": "1 - The Nature of Self.mp4",
-    "folder": "Atman Padha (Path of Self)"
+    "folder": "Atman Padha (Path of Self)",
+    "driveId": "19h17owo_ugJVlGWqNIwbcSR-YwTK12S7"
   },
   {
     "number": 13,
@@ -101,7 +114,8 @@
     "duration": "10:48",
     "is_meditation": true,
     "filename": "1.1 - Shanmukhi Mudra.mp4",
-    "folder": "Atman Padha (Path of Self)"
+    "folder": "Atman Padha (Path of Self)",
+    "driveId": "1T8Btla8GjLeNp3MnWrwP9J50gcMGFiC1"
   },
   {
     "number": 14,
@@ -109,7 +123,8 @@
     "duration": "17:22",
     "is_meditation": false,
     "filename": "2 - Panchakosha Theory.mp4",
-    "folder": "Atman Padha (Path of Self)"
+    "folder": "Atman Padha (Path of Self)",
+    "driveId": "1vruZ1LDr-ySWKFyw_mMJWWe61SPp39P4"
   },
   {
     "number": 15,
@@ -117,7 +132,8 @@
     "duration": "9:50",
     "is_meditation": true,
     "filename": "2.1 - Namaste Expansion.mp4",
-    "folder": "Atman Padha (Path of Self)"
+    "folder": "Atman Padha (Path of Self)",
+    "driveId": "16STEPQ8ZEuYQ5wovcq0WQhKs_BpeDYYO"
   },
   {
     "number": 16,
@@ -125,7 +141,8 @@
     "duration": "7:35",
     "is_meditation": true,
     "filename": "2.2 - Energy Healing.mp4",
-    "folder": "Atman Padha (Path of Self)"
+    "folder": "Atman Padha (Path of Self)",
+    "driveId": "1bltYn9-fslLgSOukUxgP_ZYvovu5WFlw"
   },
   {
     "number": 17,
@@ -133,7 +150,8 @@
     "duration": "2:58",
     "is_meditation": true,
     "filename": "2.3 - Unstruck Sound.mp4",
-    "folder": "Atman Padha (Path of Self)"
+    "folder": "Atman Padha (Path of Self)",
+    "driveId": "1IoFXuBlTWbFXXxqDqoFaSMl_E0UfXCqp"
   },
   {
     "number": 18,
@@ -141,7 +159,8 @@
     "duration": "23:46",
     "is_meditation": false,
     "filename": "3 - Confidence vs. Ego.mp4",
-    "folder": "Atman Padha (Path of Self)"
+    "folder": "Atman Padha (Path of Self)",
+    "driveId": "14nldhXSzMe7GswhH0ZsWKENEZxAprvbM"
   },
   {
     "number": 19,
@@ -149,7 +168,8 @@
     "duration": "4:23",
     "is_meditation": true,
     "filename": "3.1 - What is Self..mp4",
-    "folder": "Atman Padha (Path of Self)"
+    "folder": "Atman Padha (Path of Self)",
+    "driveId": "1qBqRnJRkiJZrir8xHPwTFjcmU-4_Hlf2"
   },
   {
     "number": 20,
@@ -157,7 +177,8 @@
     "duration": "2:01",
     "is_meditation": true,
     "filename": "3.2 - Neti Neti.mp4",
-    "folder": "Atman Padha (Path of Self)"
+    "folder": "Atman Padha (Path of Self)",
+    "driveId": "1Tv82bFrgsFgS0uyNMHNoR5kf0OPhMhR_"
   },
   {
     "number": 21,
@@ -165,7 +186,8 @@
     "duration": "34:23",
     "is_meditation": false,
     "filename": "1 - Vedic Psychology.mp4",
-    "folder": "Dealing with Samskaras"
+    "folder": "Dealing with Samskaras",
+    "driveId": "1ZyLCvl_hqTw7CpDH2TEXSSejNB5VtXWw"
   },
   {
     "number": 22,
@@ -173,7 +195,8 @@
     "duration": "20:54",
     "is_meditation": false,
     "filename": "2 - Working with Samskaras.mp4",
-    "folder": "Dealing with Samskaras"
+    "folder": "Dealing with Samskaras",
+    "driveId": "1jF4LI5Sj1xL1LDIMqBsLljAdGwIXrAQH"
   },
   {
     "number": 23,
@@ -181,7 +204,8 @@
     "duration": "17:23",
     "is_meditation": true,
     "filename": "2.1 - Yoga Nidra.mp4",
-    "folder": "Dealing with Samskaras"
+    "folder": "Dealing with Samskaras",
+    "driveId": "1kdkjoIzx5vyBfn4uAsSnfOg5igEIJOUP"
   },
   {
     "number": 24,
@@ -189,7 +213,8 @@
     "duration": "4:24",
     "is_meditation": false,
     "filename": "3 - Coaching vs. Therapy.mp4",
-    "folder": "Dealing with Samskaras"
+    "folder": "Dealing with Samskaras",
+    "driveId": "19T5ykHM7f7cojTpcviqPYsSx0s3vLyD7"
   },
   {
     "number": 25,
@@ -197,7 +222,8 @@
     "duration": "14:19",
     "is_meditation": false,
     "filename": "1 - Dukkha.mp4",
-    "folder": "Dukkha Padha (Path of Contentment)"
+    "folder": "Dukkha Padha (Path of Contentment)",
+    "driveId": "18TNp3vJoGJFrWlKQqUtwF-YF0yytgeEx"
   },
   {
     "number": 26,
@@ -205,7 +231,8 @@
     "duration": "5:44",
     "is_meditation": true,
     "filename": "1.1 - Raga and Dvesha (Attraction & Repulsion).mp4",
-    "folder": "Dukkha Padha (Path of Contentment)"
+    "folder": "Dukkha Padha (Path of Contentment)",
+    "driveId": "1vtfcgTCyMNmChxMMtQehUADKumjHgPdL"
   },
   {
     "number": 27,
@@ -213,7 +240,8 @@
     "duration": "10:53",
     "is_meditation": false,
     "filename": "2 - Dharma.mp4",
-    "folder": "Dukkha Padha (Path of Contentment)"
+    "folder": "Dukkha Padha (Path of Contentment)",
+    "driveId": "1vbugFqNuSEEnuN0JMf-_Ri3n0fy8hf_K"
   },
   {
     "number": 28,
@@ -221,7 +249,8 @@
     "duration": "17:55",
     "is_meditation": false,
     "filename": "3 - Karma.mp4",
-    "folder": "Dukkha Padha (Path of Contentment)"
+    "folder": "Dukkha Padha (Path of Contentment)",
+    "driveId": "1m2W1vhXgbeyMFPGPu_shZr1wm7E2iRs-"
   },
   {
     "number": 29,
@@ -229,7 +258,8 @@
     "duration": "6:17",
     "is_meditation": true,
     "filename": "3.1 - Uijayi Pranayama.mp4",
-    "folder": "Dukkha Padha (Path of Contentment)"
+    "folder": "Dukkha Padha (Path of Contentment)",
+    "driveId": "1YDbiD1R3sSZ4x00etSKnZFoLY7RY16fh"
   },
   {
     "number": 30,
@@ -237,7 +267,8 @@
     "duration": "21:44",
     "is_meditation": false,
     "filename": "1 - Knowledge and the Mind.mp4",
-    "folder": "Jnana Padha (Path of Knowledge)"
+    "folder": "Jnana Padha (Path of Knowledge)",
+    "driveId": "188XcFNpru93vuALJOZJnmWrvO_m0CrbW"
   },
   {
     "number": 31,
@@ -245,7 +276,8 @@
     "duration": "5:19",
     "is_meditation": true,
     "filename": "1.1 - Activating Ajna Chakra (Charging the Laser Beam).mp4",
-    "folder": "Jnana Padha (Path of Knowledge)"
+    "folder": "Jnana Padha (Path of Knowledge)",
+    "driveId": "1FtsVENQwxL8GEp0zrTdgBrQUYlc405jQ"
   },
   {
     "number": 32,
@@ -253,7 +285,8 @@
     "duration": "12:57",
     "is_meditation": false,
     "filename": "2 - Vidya & Jnana.mp4",
-    "folder": "Jnana Padha (Path of Knowledge)"
+    "folder": "Jnana Padha (Path of Knowledge)",
+    "driveId": "1RzfgsRGx5SlF3Sv-LARokIChdjI4hy39"
   },
   {
     "number": 33,
@@ -261,7 +294,8 @@
     "duration": "12:45",
     "is_meditation": false,
     "filename": "1 - The Nature of Mind.mp4",
-    "folder": "Manas Padha (Path of Mind)"
+    "folder": "Manas Padha (Path of Mind)",
+    "driveId": "1FydVG7g93H9zzsDqtLLViKPP_bgSntD3"
   },
   {
     "number": 34,
@@ -269,7 +303,8 @@
     "duration": "12:34",
     "is_meditation": false,
     "filename": "2 - System of Mind.mp4",
-    "folder": "Manas Padha (Path of Mind)"
+    "folder": "Manas Padha (Path of Mind)",
+    "driveId": "1Che1eQZBJOkRxS_WMEkq3EdG83C7HLyK"
   },
   {
     "number": 35,
@@ -277,7 +312,8 @@
     "duration": "6:52",
     "is_meditation": true,
     "filename": "2.1 - Rotating Sound Awareness.mp4",
-    "folder": "Manas Padha (Path of Mind)"
+    "folder": "Manas Padha (Path of Mind)",
+    "driveId": "1M_TjkvHg4kT58HBd-lu33Albm_Dl2KGm"
   },
   {
     "number": 36,
@@ -285,7 +321,8 @@
     "duration": "6:13",
     "is_meditation": true,
     "filename": "2.2 - Notice Faculty of Hearing.mp4",
-    "folder": "Manas Padha (Path of Mind)"
+    "folder": "Manas Padha (Path of Mind)",
+    "driveId": "1vzuA-kX2nBRh2On0JCcSCoo7fz8MNGAy"
   },
   {
     "number": 37,
@@ -293,7 +330,8 @@
     "duration": "15:54",
     "is_meditation": false,
     "filename": "3 - Intro to Mantra Practice.mp4",
-    "folder": "Manas Padha (Path of Mind)"
+    "folder": "Manas Padha (Path of Mind)",
+    "driveId": "1HjYfsdDa2_-6fegP65lX05KNKfKnLrTx"
   },
   {
     "number": 38,
@@ -301,7 +339,8 @@
     "duration": "8:13",
     "is_meditation": true,
     "filename": "3.1 - Japa.mp4",
-    "folder": "Manas Padha (Path of Mind)"
+    "folder": "Manas Padha (Path of Mind)",
+    "driveId": "1Zi8mlL12S2ahc2yl3Hudijq60Zw3iXWy"
   },
   {
     "number": 39,
@@ -309,7 +348,8 @@
     "duration": "7:32",
     "is_meditation": false,
     "filename": "1 - Karma Fal.mp4",
-    "folder": "Siddhi Padha (Patch of Accomplishment)"
+    "folder": "Siddhi Padha (Patch of Accomplishment)",
+    "driveId": "1XBc5Qda2kAmrWHl2rvpokxr44cUe-Lle"
   },
   {
     "number": 40,
@@ -317,7 +357,8 @@
     "duration": "10:06",
     "is_meditation": false,
     "filename": "2 - Origin of Motivation.mp4",
-    "folder": "Siddhi Padha (Patch of Accomplishment)"
+    "folder": "Siddhi Padha (Patch of Accomplishment)",
+    "driveId": "1RiRN7llHpASLNxgMvAmIca52itxYBkR_"
   },
   {
     "number": 41,
@@ -325,7 +366,8 @@
     "duration": "11:03",
     "is_meditation": true,
     "filename": "2.1 - Trataka (Fixed Point Gazing).mp4",
-    "folder": "Siddhi Padha (Patch of Accomplishment)"
+    "folder": "Siddhi Padha (Patch of Accomplishment)",
+    "driveId": "1FnLLvzj0GxGGBQMmEFEyqxHhyt3vWsIu"
   },
   {
     "number": 42,
@@ -333,7 +375,8 @@
     "duration": "7:26",
     "is_meditation": true,
     "filename": "2.2 - Yantra (Internal Trataka).mp4",
-    "folder": "Siddhi Padha (Patch of Accomplishment)"
+    "folder": "Siddhi Padha (Patch of Accomplishment)",
+    "driveId": "1_M66-LPFGdxSf_l7qKIKtNS6h-j6R3BH"
   },
   {
     "number": 43,
@@ -341,7 +384,8 @@
     "duration": "13:26",
     "is_meditation": false,
     "filename": "3 - Sangha.mp4",
-    "folder": "Siddhi Padha (Patch of Accomplishment)"
+    "folder": "Siddhi Padha (Patch of Accomplishment)",
+    "driveId": "1ZbeUq-DjRHjPYEXbnMeTnfAZkVJ1tIt3"
   },
   {
     "number": 44,
@@ -349,7 +393,8 @@
     "duration": "16:38",
     "is_meditation": false,
     "filename": "4 - Shuddhi.mp4",
-    "folder": "Siddhi Padha (Patch of Accomplishment)"
+    "folder": "Siddhi Padha (Patch of Accomplishment)",
+    "driveId": "1Ce8xC8_VztL24yV9q70N11N9Iqfk-uft"
   },
   {
     "number": 45,
@@ -357,7 +402,8 @@
     "duration": "10:23",
     "is_meditation": true,
     "filename": "4.1 - Kapalbhati (Breath of Fire).mp4",
-    "folder": "Siddhi Padha (Patch of Accomplishment)"
+    "folder": "Siddhi Padha (Patch of Accomplishment)",
+    "driveId": "1IX3f-fmNPUp3TTcTuSvTLbXsOGSmZIfT"
   },
   {
     "number": 46,
@@ -365,7 +411,8 @@
     "duration": "11:32",
     "is_meditation": false,
     "filename": "5 - Satya.mp4",
-    "folder": "Siddhi Padha (Patch of Accomplishment)"
+    "folder": "Siddhi Padha (Patch of Accomplishment)",
+    "driveId": "1hEWoyzqwYzy-MjOmtlnR_VEW54wBQ-BD"
   },
   {
     "number": 47,
@@ -373,7 +420,8 @@
     "duration": "4:20",
     "is_meditation": true,
     "filename": "5.1 - Replace 'I am' with 'My mind says'.mp4",
-    "folder": "Siddhi Padha (Patch of Accomplishment)"
+    "folder": "Siddhi Padha (Patch of Accomplishment)",
+    "driveId": "1Aqr0LR6XHI8yqEK68EIeYjFT2qwbR2-6"
   },
   {
     "number": 48,
@@ -381,6 +429,7 @@
     "duration": "9:18",
     "is_meditation": false,
     "filename": "6 - Reframing Goals to Actions.mp4",
-    "folder": "Siddhi Padha (Patch of Accomplishment)"
+    "folder": "Siddhi Padha (Patch of Accomplishment)",
+    "driveId": "1hGBFaSoQjeojmt0fvMXATCAyMk6VpYqa"
   }
 ]
